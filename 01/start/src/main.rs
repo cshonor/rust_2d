@@ -1,5 +1,5 @@
 use bracket_lib::prelude::*;
-fn main() {
+fn main() -> BError {
     
 }
 
@@ -12,3 +12,5 @@ impl GameState for state {
         ctx.print(1, 1, "Hello, world!");
     }
 }
+
+let context=BTermBuilder::simple80x50().with_title("Flappy Dragon").build()?;
