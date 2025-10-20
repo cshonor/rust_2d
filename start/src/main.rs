@@ -61,4 +61,16 @@ impl State {
     }
 }
 
-
+struct Player {
+    x: i32,
+    y: i32,
+    velocity: i32,
+}
+impl Player {
+    fn new(x: i32, y: i32) -> Self {
+        Self { x, y, velocity: 0 }
+    }
+    fn render(&mut self, ctx: &mut BTerm) {
+        ctx.set(0, self.y, YELLOW, BLACK,to_cp437('@'));
+    }
+}
