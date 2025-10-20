@@ -1,7 +1,7 @@
 use bracket_lib::prelude::*;
 fn main() -> BError {
     let context=BTermBuilder::simple80x50().with_title("Flappy Dragon").build()?;
-    main_loop(context,State::new());
+    main_loop(context,State::new())?;
     Ok(())
 }
 
@@ -17,13 +17,13 @@ struct State {
 
 impl GameState for State {
     fn tick(&mut self, ctx: &mut BTerm) {
+        // Clear first, then draw the current screen
+        ctx.cls();
         match self.mode {
             GameMode::Menu=> self.draw_menu(ctx),
             GameMode::Playing => self.draw_playing(ctx),
             GameMode::End => self.draw_end(ctx),
         }
-        ctx.cls();
-        ctx.print(1, 1, "Hello, world!");
     }
   
 }
